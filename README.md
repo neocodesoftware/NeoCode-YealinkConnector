@@ -20,12 +20,12 @@ What the files will and will not do...
 
 ### LIMITATIONS
 Known bugs, incomplete and unsupported features.  This is essentially our to-do list. Not in any particular order.
-* Does not track outbound calls.
-* Does not allow for control of the phone (e.g. answer calls, reject calls, make busy) from FileMaker.
+* Does not currently track outbound calls.
+* Does not currently allow for control of the phone (e.g. answer calls, reject calls, make busy) from FileMaker.
 * Only tested on Yealink SIP T28P and SIP T32G
-* The SIP T32G will display a "File Format Error" with each event ([which is a known problem with this set](
-http://forum.yealink.com/forum/showthread.php?tid=3127)) which seems to arise from what is returned from the web 
-service.
+* A known bug that the SIP T32G will display a "File Format Error" with each event ([which is a known problem with this 
+set](
+http://forum.yealink.com/forum/showthread.php?tid=3127)).
 * The unique ID of the call event sequence is reset when the phone is restarted.
 * The FileMaker database must be open to receive call data.
 
