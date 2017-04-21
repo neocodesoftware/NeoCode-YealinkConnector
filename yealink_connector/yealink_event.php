@@ -16,6 +16,13 @@ define( 'ROOT_PATH', dirname( __FILE__ ) );
 define( 'LOG_PATH', ROOT_PATH . '/log/' );
 define( 'FM_URL', 'fmp://$/' );
 
+// load configuration
+// ------------------
+// expect 2 values:
+//  - FM_database_file
+//  - FM_script_name
+$config_json = file_get_contents( ROOT_PATH . '/config.json' );
+$config      = json_decode( $config_json );
 
 // include vendor classes for logging
 require ROOT_PATH . '/vendor/Psr/Log/LoggerInterface.php';
@@ -94,8 +101,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 		// Must be known event
 		if ( $event_text != 'Unknown' ) {
 			// create URL string to call FM
-			$url = FM_URL . 'YealinkEvents.fmp12?' .
-			       'script=CallReceiver&' .
+			$url = FM_URL . $config->FM_database_file . '?' .
+			       'script=' . $config->FM_script_name . '&' .
 			       'param=' . $event . '&' .
 			       '$PhoneMAC=' . rawurlencode( $mac ) . '&' .
 			       '$PhoneIP=' . rawurlencode( $phone_ip ) . '&' .
